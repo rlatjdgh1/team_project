@@ -1,0 +1,11 @@
+<ul>
+    {% if user %}
+        <li> {{user.username}}님 환영합니다. </li>
+        <li><a href="/user/profile">profile</a></li>
+        <li><a href="/user/logout">logout</a></li>
+    {% else %}
+        <li><a href="/user/login">login</a></li>
+        <li><a href="/user/register">회원가입</a></li>
+    {% endif %}
+        <li><a href="/board/list">게시판</a></li>
+</ul>
