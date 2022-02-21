@@ -1,5 +1,14 @@
 const express = require('express')
+const nunjucks = require('nunjucks')
+
 const app = express()
+const router = require('routers')
+
+app.set('view engine', 'html')
+nunjucks.configure('views', {
+  express:app,
+})
+
 
 app.get('/', (req ,res) => {
   res.send('main')
