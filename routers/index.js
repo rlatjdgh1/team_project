@@ -6,6 +6,10 @@ router.get(`/`,(req,res)=>{
     res.render('index')
 })
 
+router.post('/write',(req,res) =>{
+    
+})
+
 
 router.use('/board',boardRouter)
 
