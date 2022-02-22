@@ -16,6 +16,8 @@ nunjucks.configure('views',{
     express:app,
 })
 
+app.use('/', express.static('public'));
+
 const maxAge = 6000
 let sessionObj = {
     secret: "kimhelp",

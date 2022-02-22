@@ -3,6 +3,7 @@ const router = express.Router()
 const {alertmove} = require('../util/alert')
 const userRouter = require('./user')
 const boardRouter = require('./board')
+<<<<<<< HEAD
 const pool = require('../db')
 const { getConnection } = require('../db')
 
@@ -21,6 +22,9 @@ router.get('/list', (req, res)=>{
     }
 });
 */
+=======
+const adminRouter = require('./admin');
+>>>>>>> a930fb4d964a75852bc63e0879401fa0fa8050f7
 
 router.get('/',(req,res)=>{
     pool.getConnection((err,conn)=>{
@@ -47,5 +51,6 @@ const login = (req,res,next)=>{
 
 router.use('/user',userRouter)
 router.use('/board',login,boardRouter)
+router.use('/admin', adminRouter);
 
 module.exports = router
