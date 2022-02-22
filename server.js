@@ -5,6 +5,8 @@ const Memorystore = require('memorystore')(session)
 const bodyParser = require('body-parser')
 const PORT = process.env.PORT || 3000
 
+require('dotenv').config()
+
 const app = express()
 const router = require('./routers')
 
@@ -14,9 +16,11 @@ nunjucks.configure('views',{
     express:app,
 })
 
+app.use('/', express.static('public'));
+
 const maxAge = 6000
 let sessionObj = {
-    secret: "ingoo",
+    secret: "kimhelp",
     resave : false,
     saveuninitialized: true,
     store: new Memorystore({ checkPeriod: maxAge}),
