@@ -4,6 +4,7 @@ const user = require('../models/user')
 const {alertmove} = require('../util/alert')
 const userRouter = require('./user')
 const boardRouter = require('./board')
+const adminRouter = require('./admin');
 
 router.get('/',(req,res)=>{
     const {user} = req.session
@@ -23,5 +24,6 @@ const login = (req,res,next)=>{
 
 router.use('/user',userRouter)
 router.use('/board',login,boardRouter)
+router.use('/admin', adminRouter);
 
 module.exports = router
