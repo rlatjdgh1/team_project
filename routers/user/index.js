@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const {alertmove} = require('../../util/alert')
-const user = require('../../models/user')
-const db = require('../../user_db')
+// const user = require('../../models/user')
+const db = require('../../db')
 
 
 router.get('/login',(req,res)=>{
@@ -21,22 +21,25 @@ router.post('/register',(req,res,next)=>{
 })
 
 router.post('/login',(req,res)=>{
-    let {userid,userpw} = req.body
-    console.log(userid,userpw,user)
-    let [item] = user.filter(v=> (v.userid==userid && v.userpw == userpw) )
-    console.log(item)
-    if (item != undefined) {
-        req.session.user = { ...item  }  
-        res.redirect('/')
-    } else {
-        res.send(alertmove('/user/login','아이디와 패스워드 불일치'))
-    }
+    param = [req.body.userid,req.body.userpw]
+    db.query('select * from user where userid=? and userpw=?',[param[0],param[1]],(err,row)=>{
+        if(err) console.log(err)
+
+        if(row.length > 0){
+            console.log(`${param[0]} , ${param[1]} 성공적으로 로그인!`)
+            res.redirect('/')
+        } else {
+            res.send(alertmove('/user/login','접속 불가!'))
+        }
+    })
 })
+
 
 router.get('/profile',(req,res)=>{
     res.render('user/profile',{
         user:user
     })
+    res.redirect('/')
 })
 
 router.get('/logout',(req,res)=>{
