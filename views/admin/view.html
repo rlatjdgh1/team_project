@@ -1,6 +1,19 @@
 <!-- /admin/view.html -->
-{% extends 'layout.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <a href="/">LOGO</a>
+    </h1>
+
     View Page
     <ul>
         <li><strong>No.</strong> : {{list[index-1].num}}</li>
@@ -17,4 +30,6 @@
     </ul>
     <a href="/admin/update?index={{index}}">Update</a>
     <a href="/admin/list">Go To List</a>
-{% endblock %}
+</body>
+
+</html>
