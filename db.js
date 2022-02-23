@@ -20,9 +20,9 @@
 const mysql = require('mysql');
 
 const host = process.env.DB_HOST || 'localhost';
-const user = process.env.DB_USER || 'ingoo3';
-const password = process.env.DB_PASSWORD || 'Ingoo0427$';
-const database = process.env.DB_DATABASE || 'TEAM';
+const user = process.env.DB_USER || 'kim';
+const password = process.env.DB_PASSWORD || 'su';
+const database = process.env.DB_DATABASE || 'homepage';
 
 const config = {
     host,

@@ -1,15 +1,21 @@
 <!-- index.html -->
 {% extends 'layout.html' %}
+
 {% block content %}
-<ul>
-    {% if user %}
+<div id="index">
+    <ul>
+        {% if user %}
         <li> {{db.userid}}환영합니다. </li>
         <!-- <li><a href="/user/profile">profile</a></li> -->
         <li><a href="/user/logout">logout</a></li>
-    {% else %}
+        {% else %}
         <li><a href="/user/login">login</a></li>
         <li><a href="/user/register">회원가입</a></li>
-    {% endif %}
+        {% endif %}
         <li><a href="/board/list">게시판</a></li>
-</ul>
+    </ul>
+    <div id="slides">
+        slides
+    </div>
+    </div>
 {% endblock %}
