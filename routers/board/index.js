@@ -20,10 +20,22 @@ router.get('/list',(req,res)=>{
 router.get('/update',(req,res)=>{
     res.render('board/update')
 })
+
 router.get('/view',(req,res)=>{
-    pool.getConnection( (err,conn)=>{
-        conn.query(`SELECT * FROM board`,(error,result)=>{
-            res.render('board/view',{viewresult})
+    res.render('board/view')
+})
+router.post('/view',(req,res)=>{
+    // pool.getConnection( (err,conn)=>{
+    //     conn.query(`SELECT * FROM board`,(error,result)=>{
+    //         res.render('board/view',{result})
+    //     })
+    //     conn.release();
+    // })
+    let { idx,title,content,date,hit } = req.body;
+        pool.getConnection( (err,conn)=>{
+            conn.query(`INSERT INTO board(idx,title,content,date,hit) VALUES('${idx}','${content}','${date},'${hit}')`,(error,result)=>{
+                console.log(result)
+                res.render('board/view',{list})
         })
         conn.release();
     })
@@ -35,13 +47,13 @@ router.get('/write',(req,res)=>{
 
 router.post('/write',(req,res) =>{
     let { title,content } = req.body;
-    pool.getConnection( (err,conn)=>{
-        conn.query(`INSERT INTO board(title,content) VALUES('${title}','${content}')`,
-        (error,result)=>{
-            console.log(result)
-            res.render('board/list',{result})
-       })
-       conn.release();
+        pool.getConnection( (err,conn)=>{
+            conn.query(`INSERT INTO board(title,content) VALUES('${idx}','${title}','${content}')`,
+                (error,result)=>{
+                    console.log(result)
+                        res.render('board/list',{result})
+        })
+        conn.release();
     })
 });
 
