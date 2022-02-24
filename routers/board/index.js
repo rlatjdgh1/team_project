@@ -16,6 +16,7 @@ router.get('/list',(req,res)=>{
         conn.release();
     })
 })
+
 router.get('/update',(req,res)=>{
     res.render('board/update')
 })
